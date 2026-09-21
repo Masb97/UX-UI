@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">UX Mobile</string>
+    <string name="welcome_title">UX Mobile</string>
+    <string name="welcome_message">Base Kotlin lista para construir la experiencia movil.</string>
+</resources>
