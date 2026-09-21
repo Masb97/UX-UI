@@ -1,10 +1,10 @@
 node_modules/
 dist/
 .angular/
-UX/web/.angular/
-UX/web/dist/
-UX/movil/.gradle/
-UX/movil/build/
-UX/movil/app/build/
+web/.angular/
+web/dist/
+movil/.gradle/
+movil/build/
+movil/app/build/
 *.iml
 .idea/
