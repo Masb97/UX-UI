@@ -1,5 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">UX Mobile</string>
-    <string name="welcome_title">UX Mobile</string>
-    <string name="welcome_message">Base Kotlin lista para construir la experiencia movil.</string>
+    <string name="app_name">Mi alarma</string>
+
+    <!-- Pantalla 1 -->
+    <string name="titulo_app">Mi alarma</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="a_donde_vas">¿A dónde vas hoy?</string>
+    <string name="trabajo">Trabajo</string>
+    <string name="casa">Casa</string>
+    <string name="programado_lv">Lo programaste para lunes a viernes. Todavía no está armada.</string>
+    <string name="si_armar">Sí, armar la alarma</string>
+    <string name="guardados_computador">Guardados desde el computador</string>
+    <string name="dir_trabajo">Carrera 30 con Calle 13</string>
+    <string name="dir_casa">Calle 45 con Carrera 24</string>
+    <string name="elegir_otro">Elegir otro destino</string>
+
+    <!-- Pantalla 2 -->
+    <string name="tu_destino">Tu destino</string>
+    <string name="volver">Volver</string>
+    <string name="cuando_te_aviso">¿Cuándo te aviso?</string>
+    <string name="dos_paradas">2 paradas antes</string>
+    <string name="dos_paradas_det">Recomendada. Te da tiempo de levantarte y pedir la parada.</string>
+    <string name="cinco_minutos">5 minutos antes</string>
+    <string name="cinco_minutos_det">Si el bus va lento o el trayecto es largo.</string>
+    <string name="ruta_descargada">La ruta ya está descargada: la alarma funciona aunque te quedes sin señal.</string>
+    <string name="armar_alarma">Armar la alarma</string>
+
+    <!-- Pantalla 3 -->
+    <string name="bajate">Bájate en 2 paradas</string>
+    <string name="desliza_apagar">Desliza para apagar</string>
+    <string name="apagada">Alarma apagada</string>
 </resources>

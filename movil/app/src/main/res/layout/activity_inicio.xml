@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Pantalla 1 · Mi alarma — ¿A dónde vas hoy?
+
+  El hallazgo de la investigación manda aquí: el modelo mental de referencia
+  no es el reloj despertador, es el mapa. Por eso el mapa ocupa la zona
+  superior y no se reduce a un adorno.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    tools:context=".InicioActivity">
+
+    <!-- Barra superior -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/barra"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/barra_alto"
+        android:background="@color/primary"
+        android:paddingStart="@dimen/margen_movil"
+        android:paddingEnd="@dimen/sp_2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/icono_app"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_alarma"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/titulo_barra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/sp_3"
+            android:text="@string/titulo_app"
+            android:textColor="@color/on_primary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/icono_app" />
+
+        <!-- Área táctil mínima 48×48 -->
+        <ImageButton
+            android:id="@+id/btn_ajustes"
+            android:layout_width="@dimen/tactil_min"
+            android:layout_height="@dimen/tactil_min"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_ajustes"
+            android:contentDescription="@string/ajustes"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Mapa: dibujado como vector, no es una imagen de fondo -->
+    <ImageView
+        android:id="@+id/mapa"
+        android:layout_width="0dp"
+        android:layout_height="176dp"
+        android:src="@drawable/mapa_trayecto"
+        android:scaleType="fitXY"
+        android:contentDescription="Mapa del trayecto hacia Trabajo"
+        app:layout_constraintTop_toBottomOf="@id/barra"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/etiqueta_mapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sp_6"
+        android:layout_marginEnd="@dimen/sp_8"
+        android:background="@drawable/fondo_etiqueta_mapa"
+        android:paddingStart="@dimen/sp_3"
+        android:paddingEnd="@dimen/sp_3"
+        android:paddingTop="@dimen/sp_1"
+        android:paddingBottom="@dimen/sp_1"
+        android:text="@string/trabajo"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="@color/on_surface"
+        app:layout_constraintTop_toTopOf="@id/mapa"
+        app:layout_constraintEnd_toEndOf="@id/mapa" />
+
+    <ScrollView
+        android:id="@+id/contenido"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/mapa"
+        app:layout_constraintBottom_toTopOf="@id/btn_otro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/margen_movil"
+            android:paddingEnd="@dimen/margen_movil"
+            android:paddingTop="@dimen/sp_6"
+            android:paddingBottom="@dimen/sp_4">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/a_donde_vas"
+                style="@style/TextoHeadlineM" />
+
+            <!-- Destino sugerido: la única acción principal de la pantalla -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sp_4"
+                android:orientation="vertical"
+                android:background="@drawable/fondo_destacado"
+                android:padding="@dimen/sp_4">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_maletin"
+                        android:contentDescription="@null" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/sp_2"
+                        android:text="@string/trabajo"
+                        style="@style/TextoTitleL"
+                        android:textColor="@color/on_primary_container" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sp_2"
+                    android:text="@string/programado_lv"
+                    style="@style/TextoBodyL" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_armar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/boton_alto"
+                    android:layout_marginTop="@dimen/sp_4"
+                    android:text="@string/si_armar"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/primary"
+                    android:textColor="@color/on_primary"
+                    app:cornerRadius="999dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sp_6"
+                android:text="@string/guardados_computador"
+                style="@style/TextoOverline" />
+
+            <!-- Ítem: Trabajo -->
+            <LinearLayout
+                android:id="@+id/item_trabajo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sp_3"
+                android:minHeight="100dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/fondo_tarjeta"
+                android:paddingStart="@dimen/sp_4"
+                android:paddingEnd="@dimen/sp_4"
+                android:paddingTop="@dimen/sp_14"
+                android:paddingBottom="@dimen/sp_14"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/fondo_avatar"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_maletin"
+                    android:contentDescription="@null" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/sp_14"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/trabajo"
+                        style="@style/TextoTitleM" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dir_trabajo"
+                        style="@style/TextoBodyM" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_chevron"
+                    android:contentDescription="@null" />
+            </LinearLayout>
+
+            <!-- Ítem: Casa -->
+            <LinearLayout
+                android:id="@+id/item_casa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sp_3"
+                android:minHeight="100dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/fondo_tarjeta"
+                android:paddingStart="@dimen/sp_4"
+                android:paddingEnd="@dimen/sp_4"
+                android:paddingTop="@dimen/sp_14"
+                android:paddingBottom="@dimen/sp_14"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/fondo_avatar"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_casa"
+                    android:contentDescription="@null" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/sp_14"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/casa"
+                        style="@style/TextoTitleM" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dir_casa"
+                        style="@style/TextoBodyM" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_chevron"
+                    android:contentDescription="@null" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- El pulgar manda: la acción secundaria vive abajo -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_otro"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/boton_alto"
+        android:layout_marginStart="@dimen/margen_movil"
+        android:layout_marginEnd="@dimen/margen_movil"
+        android:layout_marginBottom="@dimen/sp_4"
+        android:text="@string/elegir_otro"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

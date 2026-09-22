@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tokens del sistema de diseño «Mi alarma». Son roles, no colores:
+     ningún componente escoge un color, escoge un rol. -->
+<resources>
+    <color name="primary">#1B4DB1</color>
+    <color name="primary_container">#DCE6FF</color>
+    <color name="on_primary_container">#0A2A6B</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="alert">#FFB300</color>
+    <color name="alert_container">#FFF1CC</color>
+    <color name="success">#1E7A4D</color>
+    <color name="success_container">#D7F0E2</color>
+    <color name="error">#B3261E</color>
+    <color name="surface">#FDFBFF</color>
+    <color name="surface_container">#F2F3F7</color>
+    <color name="on_surface">#1B1B1F</color>
+    <color name="on_surface_variant">#45464F</color>
+    <color name="outline">#757780</color>
+    <color name="outline_variant">#C5C6D0</color>
+
+    <color name="mapa_base">#EEF1F7</color>
+    <color name="mapa_calle">#FFFFFF</color>
+    <color name="mapa_calle_mayor">#D8DEEC</color>
+    <color name="mapa_verde">#DDEBDC</color>
+</resources>

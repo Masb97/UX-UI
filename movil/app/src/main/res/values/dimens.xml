@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Toda medida del sistema es múltiplo de 4.
+     Móvil: 375 con márgenes de 16, 4 columnas, medianil 16. -->
+<resources>
+    <dimen name="sp_1">4dp</dimen>
+    <dimen name="sp_2">8dp</dimen>
+    <dimen name="sp_3">12dp</dimen>
+    <dimen name="sp_4">16dp</dimen>
+    <dimen name="sp_6">24dp</dimen>
+    <dimen name="sp_8">32dp</dimen>
+    <dimen name="sp_12">48dp</dimen>
+    <dimen name="margen_movil">16dp</dimen>
+    <dimen name="barra_alto">64dp</dimen>
+    <dimen name="boton_alto">48dp</dimen>
+    <dimen name="sp_14">14dp</dimen>
+    <!-- Área táctil mínima: el pulgar manda -->
+    <dimen name="tactil_min">48dp</dimen>
+    <dimen name="radio_campo">12dp</dimen>
+    <dimen name="radio_tarjeta">16dp</dimen>
+</resources>
