@@ -1,5 +1,6 @@
 package com.example.uxmobile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -23,6 +24,10 @@ class DestinoActivity : AppCompatActivity() {
         b.btnVolver.setOnClickListener { finish() }
         b.opcionParadas.setOnClickListener { seleccionar(paradas = true) }
         b.opcionMinutos.setOnClickListener { seleccionar(paradas = false) }
+
+        b.btnArmar.setOnClickListener {
+            startActivity(Intent(this, AvisoActivity::class.java))
+        }
 
         seleccionar(paradas = true)
     }
