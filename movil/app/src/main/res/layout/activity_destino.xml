@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Pantalla 2 · Tu destino — ¿Cuándo te aviso?
+
+  Control de selección única con dos opciones. El estado no depende solo del
+  color: la opción activa cambia fondo, color de texto y el radio marcado.
+  Es el fundamento «nada crítico depende solo del color».
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    tools:context=".DestinoActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/barra"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/barra_alto"
+        android:background="@color/primary"
+        android:paddingStart="@dimen/sp_2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_volver"
+            android:layout_width="@dimen/tactil_min"
+            android:layout_height="@dimen/tactil_min"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_atras"
+            android:contentDescription="@string/volver"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/sp_2"
+            android:text="@string/tu_destino"
+            android:textColor="@color/on_primary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_volver" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/barra"
+        app:layout_constraintBottom_toTopOf="@id/btn_armar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/margen_movil"
+            android:paddingEnd="@dimen/margen_movil"
+            android:paddingTop="@dimen/sp_6"
+            android:paddingBottom="@dimen/sp_4">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/trabajo"
+                style="@style/TextoHeadlineM" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sp_1"
+                android:text="@string/dir_trabajo"
+                style="@style/TextoBodyL"
+                android:textColor="@color/on_surface_variant" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/sp_4"
+                android:background="@color/outline_variant" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sp_4"
+                android:text="@string/cuando_te_aviso"
+                style="@style/TextoTitleL" />
+
+            <!-- Opción A -->
+            <LinearLayout
+                android:id="@+id/opcion_paradas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sp_4"
+                android:minHeight="@dimen/tactil_min"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/fondo_opcion_activa"
+                android:padding="@dimen/sp_4"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/ic_paradas"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_bus"
+                    app:tint="@color/on_primary"
+                    android:contentDescription="@null" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/sp_3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tit_paradas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dos_paradas"
+                        style="@style/TextoTitleM"
+                        android:textColor="@color/on_primary" />
+
+                    <TextView
+                        android:id="@+id/det_paradas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sp_1"
+                        android:text="@string/dos_paradas_det"
+                        style="@style/TextoBodyM"
+                        android:textColor="@color/on_primary" />
+                </LinearLayout>
+
+                <RadioButton
+                    android:id="@+id/radio_paradas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:checked="true"
+                    android:buttonTint="@color/on_primary"
+                    android:contentDescription="@string/dos_paradas" />
+            </LinearLayout>
+
+            <!-- Opción B -->
+            <LinearLayout
+                android:id="@+id/opcion_minutos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sp_14"
+                android:minHeight="@dimen/tactil_min"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/fondo_tarjeta"
+                android:padding="@dimen/sp_4"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/ic_minutos"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_reloj"
+                    app:tint="@color/on_surface"
+                    android:contentDescription="@null" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/sp_3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tit_minutos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cinco_minutos"
+                        style="@style/TextoTitleM" />
+
+                    <TextView
+                        android:id="@+id/det_minutos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sp_1"
+                        android:text="@string/cinco_minutos_det"
+                        style="@style/TextoBodyM" />
+                </LinearLayout>
+
+                <RadioButton
+                    android:id="@+id/radio_minutos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:buttonTint="@color/outline"
+                    android:contentDescription="@string/cinco_minutos" />
+            </LinearLayout>
+
+            <!-- El estado de conexión siempre se declara -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sp_3"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/fondo_gris"
+                android:padding="@dimen/sp_4">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_sin_senal"
+                    android:contentDescription="@null" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/sp_3"
+                    android:text="@string/ruta_descargada"
+                    style="@style/TextoBodyL" />
+            </LinearLayout>
+
+            <!-- El mapa lleva la etiqueta del destino encima, como en el diseño -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="176dp"
+                android:layout_marginTop="@dimen/sp_14">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/mapa_trayecto"
+                    android:scaleType="fitXY"
+                    android:contentDescription="Mapa del trayecto hacia Trabajo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="@dimen/sp_6"
+                    android:background="@drawable/fondo_etiqueta_mapa"
+                    android:paddingStart="@dimen/sp_3"
+                    android:paddingEnd="@dimen/sp_3"
+                    android:paddingTop="@dimen/sp_1"
+                    android:paddingBottom="@dimen/sp_1"
+                    android:text="@string/trabajo"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/on_surface" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_armar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/boton_alto"
+        android:layout_marginStart="@dimen/margen_movil"
+        android:layout_marginEnd="@dimen/margen_movil"
+        android:layout_marginBottom="@dimen/sp_4"
+        android:text="@string/armar_alarma"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/primary"
+        android:textColor="@color/on_primary"
+        app:cornerRadius="999dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

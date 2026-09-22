@@ -1,5 +1,6 @@
 package com.example.uxmobile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.uxmobile.databinding.ActivityInicioBinding
@@ -19,5 +20,12 @@ class InicioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         b = ActivityInicioBinding.inflate(layoutInflater)
         setContentView(b.root)
+
+        val irADestino = { startActivity(Intent(this, DestinoActivity::class.java)) }
+
+        b.btnArmar.setOnClickListener { irADestino() }
+        b.itemTrabajo.setOnClickListener { irADestino() }
+        b.itemCasa.setOnClickListener { irADestino() }
+        b.btnOtro.setOnClickListener { irADestino() }
     }
 }
