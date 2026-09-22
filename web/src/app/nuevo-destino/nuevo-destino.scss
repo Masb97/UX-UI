@@ -1,0 +1,68 @@
+.volver {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  margin-bottom: var(--sp-3);
+  color: var(--primary); text-decoration: none;
+  font: 500 16px/20px Roboto, sans-serif;
+  .material-symbols-rounded { font-size: 20px; }
+  &:hover { text-decoration: underline; }
+}
+.sub { margin: var(--sp-2) 0 var(--sp-8); }
+.m0 { margin: 0; }
+.mb { margin-bottom: var(--sp-3); }
+.bloque { display: block; }
+.fila { display: flex; align-items: center; gap: var(--sp-2);
+  .material-symbols-rounded { font-size: 18px; } }
+
+.superior {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  align-items: start;
+}
+.formulario { display: flex; flex-direction: column; gap: var(--sp-6); }
+
+.campo-con-icono {
+  position: relative;
+  .material-symbols-rounded {
+    position: absolute; left: var(--sp-4); top: 50%; transform: translateY(-50%);
+    color: var(--on-surface-variant); font-size: 20px; pointer-events: none;
+  }
+  .campo { padding-left: 48px; }
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
+
+.inferior {
+  display: grid;
+  /* Las tres columnas no son iguales en el diseño: 400 / 300 / resto */
+  grid-template-columns: 400px 300px 1fr;
+  gap: var(--gutter);
+  margin-top: var(--sp-12);
+}
+
+/* Área táctil mínima 48×48 */
+.dias { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin: var(--sp-4) 0 var(--sp-2); }
+.dia {
+  width: 48px; height: 48px;
+  background: var(--surface); color: var(--on-surface);
+  border: 1px solid var(--outline-variant); border-radius: var(--r-full);
+  font: 500 16px/20px Roboto, sans-serif; cursor: pointer;
+  &.activo { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+}
+
+.horas {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4);
+  margin: var(--sp-4) 0 var(--sp-2);
+  /* Ancho máximo y mínimo: que no se estire ni se rompa */
+  .campo { min-width: 110px; max-width: 200px; }
+}
+
+.segmentado { margin: var(--sp-4) 0 var(--sp-2); }
+
+.acciones { display: flex; gap: var(--sp-4); margin-top: 14px; }
+
+@media (max-width: 1100px) {
+  .superior, .inferior { grid-template-columns: 1fr; gap: var(--sp-8); }
+  .horas { grid-template-columns: 1fr 1fr; }
+  .segmentado { flex-direction: column; }
+}

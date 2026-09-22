@@ -1,0 +1,95 @@
+<div class="pagina">
+  <a class="volver" routerLink="/panel">
+    <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span> Volver al panel
+  </a>
+
+  <h1 class="t-headline-l">Programar una alarma para otra persona</h1>
+  <p class="t-body-l muted sub">Tú la preparas desde el computador; ella la acepta en su teléfono. Sin esa aceptación no se arma nada.</p>
+
+  <div class="columnas">
+    <!-- Formulario -->
+    <div class="formulario">
+      <div>
+        <label class="etiqueta-campo" for="para">Para</label>
+        <select id="para" class="campo" (change)="onPara($any($event.target).value)">
+          @for (t of telefonos; track t) { <option [value]="t">{{ t }}</option> }
+        </select>
+        <p class="ayuda-campo">Solo aparecen los teléfonos ya vinculados a tu cuenta</p>
+        <a class="enlace" href="#" (click)="$event.preventDefault()">
+          <span class="material-symbols-rounded" aria-hidden="true">person_add</span>
+          Vincular otro teléfono con un código
+        </a>
+      </div>
+
+      <div>
+        <label class="etiqueta-campo" for="destino">Destino</label>
+        <select id="destino" class="campo" [ngModel]="destino()" (ngModelChange)="destino.set($event)">
+          @for (d of destinos; track d) { <option [value]="d">{{ d }}</option> }
+        </select>
+        <p class="ayuda-campo">Solo aparecen tus destinos guardados</p>
+      </div>
+
+      <div>
+        <h2 class="t-title-l m0 mb">¿Cuándo le aviso?</h2>
+        <div class="segmentado">
+          <button type="button" [class.activo]="aviso() === 'paradas'"
+                  [attr.aria-pressed]="aviso() === 'paradas'" (click)="aviso.set('paradas')">
+            <span class="material-symbols-rounded" aria-hidden="true">directions_bus</span>
+            <span>
+              <span class="t-title-m bloque">2 paradas antes</span>
+              <span class="t-body-m">Recomendada</span>
+            </span>
+          </button>
+          <button type="button" [class.activo]="aviso() === 'minutos'"
+                  [attr.aria-pressed]="aviso() === 'minutos'" (click)="aviso.set('minutos')">
+            <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
+            <span>
+              <span class="t-title-m bloque">5 minutos antes</span>
+              <span class="t-body-m">Si el bus va lento</span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="t-title-l m0 mb">¿Por qué se la programas?</h2>
+        <textarea class="campo area" rows="3"
+                  [ngModel]="motivo()" (ngModelChange)="motivo.set($event)"></textarea>
+        <p class="ayuda-campo">{{ para() }} va a ver este motivo tal cual lo escribas.</p>
+      </div>
+    </div>
+
+    <!-- Vista previa -->
+    <section class="tarjeta previa">
+      <header class="previa-cab">
+        <h2 class="t-title-l m0">Lo que va a recibir {{ para() }}</h2>
+        <span class="chip activo">
+          <span class="material-symbols-rounded" aria-hidden="true">check</span>
+          Para {{ para() }}
+        </span>
+      </header>
+
+      <dl class="campos">
+        <div><dt class="t-label-s muted">Quién la programó</dt><dd class="t-body-l">Juan Sebastián</dd></div>
+        <div><dt class="t-label-s muted">Para quién es</dt><dd class="t-body-l">{{ para() }}</dd></div>
+        <div><dt class="t-label-s muted">Destino</dt><dd class="t-body-l">{{ destino() }} · {{ direccion() }}</dd></div>
+        <div><dt class="t-label-s muted">Cuándo le aviso</dt><dd class="t-body-l">{{ textoAviso() }}</dd></div>
+        <div><dt class="t-label-s muted">Motivo</dt><dd class="t-body-l">«{{ motivo() }}»</dd></div>
+      </dl>
+
+      <!-- alert-container: banda de alarma en reposo. Es el único uso del ámbar. -->
+      <div class="aviso aviso-alerta">
+        <span class="material-symbols-rounded" aria-hidden="true">alarm</span>
+        <div>
+          <p class="t-title-m m0">Todavía no está armada</p>
+          <p class="t-body-m m0">{{ para() }} tiene que aceptarla en su teléfono. Hasta entonces no suena nada.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="acciones">
+    <a class="btn-primario" routerLink="/panel">Enviar la alarma</a>
+    <a class="btn-secundario" routerLink="/panel">Cancelar</a>
+  </div>
+</div>

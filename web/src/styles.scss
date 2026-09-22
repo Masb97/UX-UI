@@ -1,0 +1,228 @@
+
+@use 'bootstrap/dist/css/bootstrap.min.css';
+
+/* ============================================================
+   Mi alarma — tokens del sistema de diseño
+   Los nombres son roles, no colores: ningún componente escoge
+   un color, escoge un rol. (Design System, lámina 2 de 8)
+   ============================================================ */
+:root {
+  --primary:            #1B4DB1;
+  --primary-container:  #DCE6FF;
+  --on-primary-container: #0A2A6B;
+  --alert:              #FFB300;
+  --alert-container:    #FFF1CC;
+  --success:            #1E7A4D;
+  --success-container:  #D7F0E2;
+  --error:              #B3261E;
+  --error-container:    #FBE4E2;
+  --surface:            #FDFBFF;
+  --surface-container:  #F2F3F7;
+  --on-surface:         #1B1B1F;
+  --on-surface-variant: #45464F;
+  --outline:            #757780;
+  --outline-variant:    #C5C6D0;
+  --on-primary:         #FFFFFF;
+
+  /* Escala de espaciado — toda medida del sistema es múltiplo de 4 */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-6: 24px; --sp-8: 32px; --sp-12: 48px; --sp-16: 64px;
+
+  /* Radios */
+  --r-label: 8px;   /* etiqueta sobre el mapa */
+  --r-field: 12px;  /* campo, aviso, ítem de lista */
+  --r-card: 16px;   /* tarjeta y mapa */
+  --r-full: 999px;  /* botón, chip, día, control segmentado */
+
+  /* Retícula web: 1440, márgenes 48, 12 columnas de 90, medianil 24 */
+  --page-max: 1440px;
+  --page-margin: 48px;
+  --gutter: 24px;
+  --barra-alto: 72px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--surface-container);
+  color: var(--on-surface);
+  font-family: Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Body L — 16/24, 0.15 */
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+
+/* ---- Escala tipográfica (lámina 3 de 8) ---- */
+.t-display-l  { font: 500 48px/56px Roboto, sans-serif; letter-spacing: -0.5px; }
+.t-headline-l { font: 500 32px/40px Roboto, sans-serif; letter-spacing: -0.25px; }
+.t-headline-m { font: 500 28px/36px Roboto, sans-serif; letter-spacing: 0; }
+.t-title-l    { font: 500 22px/28px Roboto, sans-serif; letter-spacing: 0; }
+.t-title-m    { font: 500 18px/24px Roboto, sans-serif; letter-spacing: 0.1px; }
+.t-body-l     { font: 400 16px/24px Roboto, sans-serif; letter-spacing: 0.15px; }
+.t-body-m     { font: 400 14px/20px Roboto, sans-serif; letter-spacing: 0.25px; }
+.t-label-l    { font: 500 16px/20px Roboto, sans-serif; letter-spacing: 0.1px; }
+.t-label-m    { font: 500 14px/20px Roboto, sans-serif; letter-spacing: 0.1px; }
+.t-label-s    { font: 500 12px/16px Roboto, sans-serif; letter-spacing: 0.5px; }
+.t-overline {
+  font: 500 11px/16px Roboto, sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.t-mono-s { font: 400 12px/16px 'Roboto Mono', monospace; }
+
+.muted { color: var(--on-surface-variant); }
+
+/* Iconografía: Material Symbols Rounded, peso 400 y FILL 0 — la variante
+   exacta que usan los glifos del archivo de Figma.
+   La API css2 solo entrega el @font-face, no la clase de ayuda que sí traía
+   la API antigua /icon?family=. Hay que declararla completa aquí o el nombre
+   del icono se renderiza como texto. */
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ---- Componentes base ---- */
+/* Un solo botón de relleno primario por pantalla: es el fundamento
+   «una sola acción principal» de la lámina 1. */
+.btn-primario {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2);
+  text-decoration: none;
+  min-height: 48px; padding: 0 var(--sp-6);
+  background: var(--primary); color: var(--on-primary);
+  border: none; border-radius: var(--r-full);
+  font: 500 16px/20px Roboto, sans-serif; letter-spacing: 0.1px;
+  cursor: pointer;
+  &:hover { background: #163f92; }
+  &:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+}
+
+.btn-secundario {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2);
+  text-decoration: none;
+  min-height: 48px; padding: 0 var(--sp-6);
+  background: transparent; color: var(--primary);
+  border: 1px solid var(--outline); border-radius: var(--r-full);
+  font: 500 16px/20px Roboto, sans-serif; letter-spacing: 0.1px;
+  cursor: pointer;
+  &:hover { background: var(--primary-container); }
+  &:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+}
+
+.tarjeta {
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--r-card);
+  /* 32 a los lados, 28 arriba y abajo — como en el archivo de Figma */
+  padding: 28px var(--sp-8);
+}
+
+.campo {
+  width: 100%;
+  min-height: 56px;
+  padding: 0 var(--sp-4);
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--r-field);
+  font: 400 16px/24px Roboto, sans-serif;
+  color: var(--on-surface);
+  &:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary); }
+}
+
+.etiqueta-campo {
+  display: block;
+  margin-bottom: var(--sp-2);
+  font: 500 12px/16px Roboto, sans-serif;
+  letter-spacing: 0.5px;
+  color: var(--on-surface-variant);
+}
+
+.ayuda-campo {
+  margin: var(--sp-2) 0 0;
+  font: 400 14px/20px Roboto, sans-serif;
+  color: var(--on-surface-variant);
+}
+
+/* Chip — radio completo, área táctil mínima 48 */
+.chip {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  min-height: 48px; padding: 0 var(--sp-4);
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--r-full);
+  font: 500 14px/20px Roboto, sans-serif;
+  color: var(--on-surface);
+  cursor: pointer;
+  &.activo {
+    background: var(--primary-container);
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+}
+
+/* Control segmentado */
+.segmentado {
+  display: flex;
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--r-full);
+  overflow: hidden;
+  background: var(--surface);
+
+  button {
+    flex: 1;
+    display: flex; align-items: center; gap: var(--sp-3);
+    min-height: 68px; padding: 0 var(--sp-4);
+    background: transparent; border: none; cursor: pointer;
+    text-align: left; color: var(--on-surface);
+    white-space: nowrap;
+    .material-symbols-rounded { flex: 0 0 auto; }
+    &.activo { background: var(--primary); color: var(--on-primary); }
+  }
+}
+
+/* Avisos */
+.aviso {
+  display: flex; gap: var(--sp-3);
+  padding: var(--sp-4);
+  border-radius: var(--r-field);
+}
+/* Los banner con título y cuerpo miden 100 en el diseño */
+.aviso-exito, .aviso-alerta, .aviso-error { min-height: 100px; align-items: flex-start; }
+.aviso-exito  { background: var(--success-container);
+  > .material-symbols-rounded { color: var(--success); } }
+.aviso-alerta { background: var(--alert-container); }
+.aviso-error  { background: var(--error-container); }
+.aviso-info   { background: var(--primary-container); }
+.aviso-vacio  { background: var(--surface-container); color: var(--on-surface-variant);
+  > .material-symbols-rounded { color: var(--outline); } }
+
+/* ---- Adaptable, no responsive ----
+   No hay que ser responsive, pero sí adaptarse a una pantalla
+   más grande o más pequeña sin romperse. */
+.pagina {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  /* Las pantallas con enlace de volver arrancan en 104; el panel, en 112 */
+  padding: var(--sp-8) var(--page-margin) var(--sp-12);
+}
+.pagina--panel { padding-top: 40px; }
+
+@media (max-width: 1100px) {
+  .pagina { padding-left: var(--sp-6); padding-right: var(--sp-6); }
+}

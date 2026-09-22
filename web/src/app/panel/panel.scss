@@ -1,0 +1,81 @@
+.sub { margin: var(--sp-2) 0 56px; }   /* encabezado termina en 184, columnas en 240 */
+.m0 { margin: 0; }
+
+/* 12 columnas de 90 con medianil de 24 → tres tarjetas de 4 columnas */
+.columnas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gutter);
+  align-items: stretch;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  h2 { margin: 0; }
+}
+
+/* Frame «cuerpo» del diseño: crece para que el botón quede abajo */
+.cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+/* 32 entre el final del cuerpo y el botón (28 + 370 + 32 + 48 + 28 = 506) */
+.ancho { width: 100%; margin-top: var(--sp-8); }
+
+.item {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%; min-height: 100px; padding: 14px var(--sp-4);
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--r-field);
+  cursor: pointer; text-align: left;
+  &:hover { border-color: var(--primary); }
+}
+.avatar {
+  display: grid; place-items: center;
+  width: 40px; height: 40px; flex: 0 0 40px;
+  background: var(--primary-container); color: var(--on-primary-container);
+  border-radius: var(--r-full); font-size: 20px;
+}
+.item-texto { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.chevron { color: var(--on-surface-variant); }
+
+.trayecto {
+  display: flex; flex-direction: column; gap: var(--sp-2);
+  padding: var(--sp-4);
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--r-field);
+}
+.fila { display: flex; align-items: center; gap: var(--sp-2);
+  .material-symbols-rounded { font-size: 18px; } }
+.azul { color: var(--primary); }
+
+.t-overline { margin: var(--sp-2) 0 0; }
+
+.proximo {
+  display: grid;
+  grid-template-columns: 405px 1fr;
+  gap: var(--sp-8);
+  margin-top: var(--sp-8);
+  padding: var(--sp-6);
+  align-items: center;
+}
+.detalle p:last-of-type { margin-bottom: 0; }
+.propuesta {
+  display: inline-flex; align-items: center; width: auto;
+  color: var(--primary);
+  .material-symbols-rounded { font-size: 20px; }
+}
+
+/* Adaptable: en pantallas estrechas las columnas se apilan */
+@media (max-width: 1100px) {
+  .columnas { grid-template-columns: 1fr; }
+  .proximo { grid-template-columns: 1fr; }
+}
+
+.propuesta .t-label-l { color: var(--on-primary-container); }

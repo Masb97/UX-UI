@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Pantalla 3 · «Bájate en 2 paradas»
+
+  Es la única pantalla donde el ámbar cubre todo: el token `alert` está
+  reservado para la alarma sonando. El texto usa Display L (48sp) porque
+  tiene que leerse de pie, en movimiento y a la distancia de un brazo.
+  Apagar no requiere leer: el área de acción vive en los últimos 96 dp.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/alert"
+    android:paddingStart="@dimen/margen_movil"
+    android:paddingEnd="@dimen/margen_movil"
+    tools:context=".AvisoActivity">
+
+    <!-- El bloque vive en el centro óptico: ni pegado arriba ni al slider.
+         Va como cadena vertical para que el orden no dependa de anclajes cruzados. -->
+    <LinearLayout
+        android:id="@+id/bloque"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/deslizador"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.42">
+
+        <ImageView
+            android:id="@+id/icono"
+            android:layout_width="72dp"
+            android:layout_height="86dp"
+            android:layout_marginBottom="@dimen/sp_6"
+            android:src="@drawable/ic_alarma_grande"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bajate"
+            style="@style/TextoDisplayL" />
+
+        <TextView
+            android:id="@+id/destino"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp_4"
+            android:text="@string/trabajo"
+            style="@style/TextoTitleL" />
+
+        <TextView
+            android:id="@+id/direccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dir_trabajo"
+            style="@style/TextoBodyL" />
+    </LinearLayout>
+
+    <!-- Deslizador de apagado: 96 dp de alto, en la zona del pulgar -->
+    <FrameLayout
+        android:id="@+id/deslizador"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="@dimen/sp_6"
+        android:background="@drawable/fondo_deslizador"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="@string/desliza_apagar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/pomo"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="@dimen/sp_2"
+            android:background="@drawable/fondo_avatar"
+            android:backgroundTint="@color/alert"
+            android:padding="@dimen/sp_4"
+            android:src="@drawable/ic_encendido"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:id="@+id/texto_deslizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="78dp"
+            android:text="@string/desliza_apagar"
+            style="@style/TextoTitleM" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="@dimen/sp_6"
+            android:src="@drawable/ic_flecha_der"
+            android:contentDescription="@null" />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

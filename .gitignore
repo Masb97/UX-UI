@@ -8,3 +8,4 @@ movil/build/
 movil/app/build/
 *.iml
 .idea/
+movil/local.properties

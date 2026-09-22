@@ -1,0 +1,92 @@
+<div class="pagina pagina--panel">
+  <h1 class="t-headline-l">Tu panel</h1>
+  <p class="t-body-l muted sub">Guardaste un destino. Si quieres, ahora puedes programarle una alarma a alguien más.</p>
+
+  <div class="columnas">
+    <!-- Mis destinos -->
+    <section class="tarjeta">
+      <div class="cuerpo">
+        <h2 class="t-title-l">Mis destinos</h2>
+
+      <div class="aviso aviso-exito">
+        <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
+        <div>
+          <p class="t-title-m m0">Destino «Trabajo» guardado</p>
+          <p class="t-body-m m0">Ya puedes programar un trayecto con él.</p>
+        </div>
+      </div>
+
+      @for (d of destinos; track d.nombre) {
+        <button type="button" class="item">
+          <span class="avatar material-symbols-rounded" aria-hidden="true">{{ d.icono }}</span>
+          <span class="item-texto">
+            <span class="t-title-m">{{ d.nombre }}</span>
+            <span class="t-body-m muted">{{ d.direccion }}</span>
+          </span>
+          <span class="material-symbols-rounded chevron" aria-hidden="true">chevron_right</span>
+        </button>
+      }
+      </div>
+
+      <a class="btn-secundario ancho" routerLink="/nuevo-destino">Agregar destino</a>
+    </section>
+
+    <!-- Mis trayectos -->
+    <section class="tarjeta">
+      <div class="cuerpo">
+        <h2 class="t-title-l">Mis trayectos</h2>
+
+      <div class="trayecto">
+        <p class="t-title-m m0 fila">
+          <span class="material-symbols-rounded azul" aria-hidden="true">directions</span>
+          Casa &#8594; Trabajo
+        </p>
+        <p class="t-body-m muted m0">Lunes a viernes · salgo entre las 6:00 y las 8:00</p>
+        <p class="t-body-m muted m0 fila">
+          <span class="material-symbols-rounded" aria-hidden="true">directions_bus</span>
+          Te aviso 2 paradas antes
+        </p>
+      </div>
+      </div>
+
+      <a class="btn-secundario ancho" routerLink="/nuevo-destino">Programar un trayecto</a>
+    </section>
+
+    <!-- Alarmas que programaste -->
+    <section class="tarjeta">
+      <div class="cuerpo">
+        <h2 class="t-title-l">Alarmas que programaste</h2>
+
+      <p class="t-overline">En curso</p>
+      <div class="aviso aviso-vacio">
+        <span class="material-symbols-rounded" aria-hidden="true">inbox</span>
+        <p class="t-body-m m0">Todavía no has programado alarmas para alguien más.</p>
+      </div>
+
+      <p class="t-overline">Terminadas</p>
+      <div class="aviso aviso-vacio">
+        <span class="material-symbols-rounded" aria-hidden="true">inbox</span>
+        <p class="t-body-m m0">Aún no hay nada por aquí.</p>
+      </div>
+
+      <!-- La única acción principal de la pantalla -->
+      </div>
+
+      <a class="btn-primario ancho" routerLink="/programar-alarma">Programar una alarma</a>
+    </section>
+  </div>
+
+  <!-- Próximo trayecto -->
+  <section class="tarjeta proximo">
+    <app-mapa destino="Trabajo" nota="8 km · unos 22 min" [alto]="238" [ancho]="405" />
+    <div class="detalle">
+      <p class="t-overline">Tu próximo trayecto · mañana</p>
+      <h2 class="t-headline-l m0">Casa &#8594; Trabajo</h2>
+      <p class="t-body-l muted">Salgo entre las 6:00 y las 8:00. Dentro de ese rango te propongo la alarma del día en el teléfono.</p>
+      <p class="aviso aviso-info propuesta">
+        <span class="material-symbols-rounded" aria-hidden="true">alarm_on</span>
+        <span class="t-label-l">Te lo propongo mañana a las 6:00</span>
+      </p>
+    </div>
+  </section>
+</div>

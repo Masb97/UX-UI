@@ -1,0 +1,107 @@
+<div class="pagina">
+  <a class="volver" routerLink="/panel">
+    <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span> Volver al panel
+  </a>
+
+  <h1 class="t-headline-l">Nuevo destino</h1>
+  <p class="t-body-l muted sub">Marca el punto exacto ahora, sentado y con el mapa grande. Después, en el bus, ya no hay que buscar nada.</p>
+
+  <div class="superior">
+    <div>
+      <app-mapa destino="Trabajo" nota="8 km desde aquí" notaIcono="my_location" [alto]="372" [ancho]="660" />
+      <p class="ayuda-campo fila">
+        <span class="material-symbols-rounded" aria-hidden="true">my_location</span>
+        Toca el mapa para ajustar el punto. Desde donde estés, lo detectamos solo.
+      </p>
+    </div>
+
+    <div class="formulario">
+      <div>
+        <label class="etiqueta-campo" for="buscar">Buscar una dirección o un lugar</label>
+        <div class="campo-con-icono">
+          <span class="material-symbols-rounded" aria-hidden="true">search</span>
+          <input id="buscar" class="campo" type="text" value="Carrera 30 con Calle 13" />
+        </div>
+        <p class="ayuda-campo">Encontramos el punto en Bogotá</p>
+      </div>
+
+      <div>
+        <label class="etiqueta-campo" for="ciudad">Ciudad</label>
+        <input id="ciudad" class="campo" type="text" value="Bogotá" />
+      </div>
+
+      <div>
+        <h2 class="t-title-l m0">¿Cómo quieres llamarlo?</h2>
+        <p class="ayuda-campo mb">Así lo vas a ver la próxima vez, sin buscarlo.</p>
+        <div class="chips">
+          @for (e of etiquetas; track e) {
+            <button type="button" class="chip" [class.activo]="etiqueta() === e"
+                    [attr.aria-pressed]="etiqueta() === e" (click)="etiqueta.set(e)">
+              @if (etiqueta() === e) {
+                <span class="material-symbols-rounded" aria-hidden="true">check</span>
+              }
+              {{ e }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="tarjeta inferior">
+    <div>
+      <h2 class="t-title-l m0">¿Qué días?</h2>
+      <div class="dias">
+        @for (d of diasSemana; track d.id) {
+          <button type="button" class="dia" [class.activo]="dias().includes(d.id)"
+                  [attr.aria-pressed]="dias().includes(d.id)"
+                  (click)="alternarDia(d.id)">{{ d.letra }}</button>
+        }
+      </div>
+      <p class="ayuda-campo">{{ resumenDias }}</p>
+    </div>
+
+    <div>
+      <h2 class="t-title-l m0">¿Entre qué horas sales?</h2>
+      <div class="horas">
+        <div>
+          <label class="etiqueta-campo" for="desde">Desde</label>
+          <input id="desde" class="campo" type="text" value="6:00" inputmode="numeric" />
+        </div>
+        <div>
+          <label class="etiqueta-campo" for="hasta">Hasta</label>
+          <input id="hasta" class="campo" type="text" value="8:00" inputmode="numeric" />
+        </div>
+      </div>
+      <p class="ayuda-campo">Dentro de ese rango te propongo la alarma del día.</p>
+    </div>
+
+    <div>
+      <h2 class="t-title-l m0">¿Cuándo te aviso?</h2>
+      <div class="segmentado">
+        <button type="button" [class.activo]="aviso() === 'paradas'"
+                [attr.aria-pressed]="aviso() === 'paradas'" (click)="aviso.set('paradas')">
+          <span class="material-symbols-rounded" aria-hidden="true">directions_bus</span>
+          <span>
+            <span class="t-title-m bloque">2 paradas antes</span>
+            <span class="t-body-m">Recomendada</span>
+          </span>
+        </button>
+        <button type="button" [class.activo]="aviso() === 'minutos'"
+                [attr.aria-pressed]="aviso() === 'minutos'" (click)="aviso.set('minutos')">
+          <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
+          <span>
+            <span class="t-title-m bloque">5 minutos antes</span>
+            <span class="t-body-m">Si el bus va lento</span>
+          </span>
+        </button>
+      </div>
+      <p class="ayuda-campo">Puedes cambiarlo después desde el teléfono.</p>
+    </div>
+  </section>
+
+  <div class="acciones">
+    <a class="btn-primario" routerLink="/panel">Guardar destino</a>
+    <a class="btn-secundario" routerLink="/panel">Cancelar</a>
+  </div>
+</div>
