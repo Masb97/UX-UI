@@ -221,7 +221,11 @@ html, body {
   /* Las pantallas con enlace de volver arrancan en 104; el panel, en 112 */
   padding: var(--sp-8) var(--page-margin) var(--sp-12);
 }
-.pagina--panel { padding-top: 40px; }
+.pagina--panel {
+  padding-top: 40px;
+  /* Frame Figma: 1112 px, incluidos los 72 px de la barra. */
+  min-height: calc(1112px - var(--barra-alto));
+}
 
 @media (max-width: 1100px) {
   .pagina { padding-left: var(--sp-6); padding-right: var(--sp-6); }

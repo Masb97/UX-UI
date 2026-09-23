@@ -58,8 +58,8 @@ import { Component, Input, computed, signal } from '@angular/core';
               stroke-linecap="round" stroke-linejoin="round" />
 
         <!-- posición actual -->
-        <circle [attr.cx]="px(0.254)" [attr.cy]="py(0.840)" r="13" fill="#1B4DB1" opacity=".2" />
-        <circle [attr.cx]="px(0.254)" [attr.cy]="py(0.840)" r="6"  fill="#1B4DB1" />
+        <circle [attr.cx]="px(llegada ? 0.476 : 0.254)" [attr.cy]="py(llegada ? 0.630 : 0.840)" r="13" fill="#1B4DB1" opacity=".2" />
+        <circle [attr.cx]="px(llegada ? 0.476 : 0.254)" [attr.cy]="py(llegada ? 0.630 : 0.840)" r="6"  fill="#1B4DB1" />
 
         <!-- destino -->
         <g [attr.transform]="'translate(' + px(0.499) + ',' + py(0.555) + ')'">
@@ -116,6 +116,7 @@ export class Mapa {
   @Input() destino = 'Trabajo';
   @Input() nota: string | null = null;
   @Input() notaIcono = 'directions_bus';
+  @Input() llegada = false;
   /** Alto y ancho del cuadro de render, en píxeles. */
   @Input() alto = 238;
   @Input() ancho = 405;

@@ -1,6 +1,6 @@
-<div class="pagina pagina--panel">
+<div class="pagina pagina--panel" [class.pagina--seguimiento]="alarmaEnCurso() || alarmaTerminada()">
   <h1 class="t-headline-l">Tu panel</h1>
-  <p class="t-body-l muted sub">{{ alarmaEnCurso() ? 'Andrés va en camino. Le aviso dos paradas antes de que llegue.' : 'Guardaste un destino. Si quieres, ahora puedes programarle una alarma a alguien más.' }}</p>
+  <p class="t-body-l muted sub">{{ subtitulo() }}</p>
 
   <div class="columnas">
     <!-- Mis destinos -->
@@ -8,7 +8,7 @@
       <div class="cuerpo">
         <h2 class="t-title-l">Mis destinos</h2>
 
-      @if (!alarmaEnCurso()) {
+      @if (!alarmaEnCurso() && !alarmaTerminada()) {
       <div class="aviso aviso-exito">
         <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
         <div>
@@ -71,15 +71,25 @@
       } @else {
       <div class="aviso aviso-vacio">
         <span class="material-symbols-rounded" aria-hidden="true">inbox</span>
-        <p class="t-body-m m0">Todavía no has programado alarmas para alguien más.</p>
+        <p class="t-body-m m0">{{ alarmaTerminada() ? 'No tienes alarmas activas en este momento.' : 'Todavía no has programado alarmas para alguien más.' }}</p>
       </div>
       }
 
       <p class="t-overline">Terminadas</p>
+      @if (alarmaTerminada()) {
+      <div class="trayecto">
+        <div class="encabezado-alarma">
+          <p class="t-title-m m0">Andrés llegó a las 7:42</p>
+          <span class="estado-alarma estado-alarma--terminada t-label-s">Terminada</span>
+        </div>
+        <p class="t-body-m muted m0">Trabajo · le avisé 2 paradas antes</p>
+      </div>
+      } @else {
       <div class="aviso aviso-vacio">
         <span class="material-symbols-rounded" aria-hidden="true">inbox</span>
         <p class="t-body-m m0">Aún no hay nada por aquí.</p>
       </div>
+      }
 
       <!-- La única acción principal de la pantalla -->
       </div>
@@ -90,7 +100,7 @@
 
   @if (alarmaEnCurso()) {
   <section class="tarjeta proximo proximo--en-curso" aria-labelledby="trayecto-en-curso">
-    <app-mapa destino="Trabajo" nota="Faltan 8 km" [alto]="350" [ancho]="600" />
+    <app-mapa destino="Trabajo" nota="Faltan 8 km" [alto]="352" [ancho]="600" />
     <div class="detalle">
       <p class="t-overline">Alarma en curso · ahora</p>
       <h2 id="trayecto-en-curso" class="t-headline-l m0">Casa &#8594; Trabajo</h2>
@@ -100,8 +110,21 @@
           <span class="material-symbols-rounded" aria-hidden="true">alarm_on</span>
           <span class="t-label-l">Alarma armada en el teléfono de Andrés</span>
         </p>
-        <button type="button" class="btn-secundario">Ir a panel con alarma terminada</button>
       </div>
+    </div>
+  </section>
+  } @else if (alarmaTerminada()) {
+  <section class="tarjeta proximo proximo--en-curso" aria-labelledby="trayecto-terminado">
+    <app-mapa destino="Trabajo" nota="Llegó a las 7:42" notaIcono="check_circle"
+              [llegada]="true" [alto]="352" [ancho]="600" />
+    <div class="detalle">
+      <p class="t-overline">Este trayecto · hoy</p>
+      <h2 id="trayecto-terminado" class="t-headline-l m0">Casa &#8594; Trabajo</h2>
+      <p class="t-body-l muted">Andrés llegó a Trabajo a las 7:42. La alarma sonó dos paradas antes, como estaba programada.</p>
+      <p class="aviso aviso-info propuesta">
+        <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
+        <span class="t-label-l">Terminada a las 7:42</span>
+      </p>
     </div>
   </section>
   } @else {
@@ -117,9 +140,9 @@
           <span class="material-symbols-rounded" aria-hidden="true">alarm_on</span>
           <span class="t-label-l">Te lo propongo mañana a las 6:00</span>
         </p>
-        <a class="btn-secundario" routerLink="/panel-alarma-en-curso">Ver panel alarma en curso</a>
       </div>
     </div>
   </section>
   }
 </div>
+<app-navegacion-panel />
