@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, computed, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Mapa } from '../compartido/mapa';
 
 @Component({
@@ -10,6 +11,14 @@ import { Mapa } from '../compartido/mapa';
   styleUrl: './nuevo-destino.scss',
 })
 export class NuevoDestino {
+  private readonly ruta = inject(ActivatedRoute);
+  private readonly parametros = toSignal(this.ruta.queryParamMap, {
+    initialValue: this.ruta.snapshot.queryParamMap,
+  });
+  readonly textoGuardar = computed(() =>
+    this.parametros().get('modo') === 'trayecto' ? 'Guardar trayecto' : 'Guardar destino'
+  );
+
   // Estado de interfaz, no de negocio: es un prototipo no funcional.
   // No persiste nada ni captura datos — es el techo de esta entrega.
   etiqueta = signal('Trabajo');

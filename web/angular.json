@@ -52,5 +52,8 @@
       }
     }
   },
-  "cli": { "packageManager": "npm" }
+  "cli": {
+    "packageManager": "npm",
+    "analytics": "eccdf190-35a3-4968-a76f-0f1666bd5a63"
+  }
 }

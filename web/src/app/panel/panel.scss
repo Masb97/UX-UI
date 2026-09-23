@@ -66,6 +66,13 @@
   align-items: center;
 }
 .detalle p:last-of-type { margin-bottom: 0; }
+.acciones-propuesta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  .propuesta { margin: 0; }
+}
 .propuesta {
   display: inline-flex; align-items: center; width: auto;
   color: var(--primary);

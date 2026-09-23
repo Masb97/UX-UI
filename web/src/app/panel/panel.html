@@ -49,7 +49,7 @@
       </div>
       </div>
 
-      <a class="btn-secundario ancho" routerLink="/nuevo-destino">Programar un trayecto</a>
+      <a class="btn-secundario ancho" routerLink="/nuevo-destino" [queryParams]="{ modo: 'trayecto' }">Programar un trayecto</a>
     </section>
 
     <!-- Alarmas que programaste -->
@@ -83,10 +83,13 @@
       <p class="t-overline">Tu próximo trayecto · mañana</p>
       <h2 class="t-headline-l m0">Casa &#8594; Trabajo</h2>
       <p class="t-body-l muted">Salgo entre las 6:00 y las 8:00. Dentro de ese rango te propongo la alarma del día en el teléfono.</p>
-      <p class="aviso aviso-info propuesta">
-        <span class="material-symbols-rounded" aria-hidden="true">alarm_on</span>
-        <span class="t-label-l">Te lo propongo mañana a las 6:00</span>
-      </p>
+      <div class="acciones-propuesta">
+        <p class="aviso aviso-info propuesta">
+          <span class="material-symbols-rounded" aria-hidden="true">alarm_on</span>
+          <span class="t-label-l">Te lo propongo mañana a las 6:00</span>
+        </p>
+        <button type="button" class="btn-secundario">Ver panel alarma en curso</button>
+      </div>
     </div>
   </section>
 </div>

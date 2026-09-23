@@ -1,0 +1,58 @@
+<div class="pagina pagina--panel">
+  <h1 class="t-headline-l">Empieza aquí</h1>
+  <p class="t-body-l muted sub">Tres pasos, en este orden. El segundo y el tercero necesitan un destino guardado.</p>
+
+  <div class="pasos">
+    <section class="tarjeta paso" aria-labelledby="titulo-destino">
+      <div class="cabecera-paso">
+        <span class="icono-paso primero material-symbols-rounded" aria-hidden="true">location_on</span>
+        <span class="numero primero-texto">Paso 1</span>
+      </div>
+      <h2 id="titulo-destino" class="t-title-l">Guarda un destino</h2>
+      <p class="t-body-l muted descripcion">Los lugares a los que vas siempre. Aquí, sentado y con el mapa grande, el punto queda exacto.</p>
+      <div class="accion">
+        <a class="btn-primario" routerLink="/nuevo-destino">Agregar destino</a>
+      </div>
+    </section>
+
+    <section class="tarjeta paso" aria-labelledby="titulo-trayecto">
+      <div class="cabecera-paso">
+        <span class="icono-paso material-symbols-rounded" aria-hidden="true">route</span>
+        <span class="numero">Paso 2</span>
+      </div>
+      <h2 id="titulo-trayecto" class="t-title-l">Programa un trayecto</h2>
+      <p class="t-body-l muted descripcion">Elige los días y la franja horaria en que sales. Dentro de ese rango te propongo la alarma del día.</p>
+      <div class="accion">
+        <p id="bloqueo-trayecto" class="bloqueo t-body-m muted">
+          <span class="material-symbols-rounded" aria-hidden="true">lock</span>
+          Primero guarda un destino
+        </p>
+        <button class="btn-secundario" type="button" disabled aria-describedby="bloqueo-trayecto">Programar un trayecto</button>
+      </div>
+    </section>
+
+    <section class="tarjeta paso" aria-labelledby="titulo-alarma">
+      <div class="cabecera-paso">
+        <span class="icono-paso material-symbols-rounded" aria-hidden="true">group</span>
+        <span class="numero">Paso 3</span>
+      </div>
+      <h2 id="titulo-alarma" class="t-title-l">Programa una alarma a alguien</h2>
+      <p class="t-body-l muted descripcion">En el teléfono de otra persona. Solo se arma si esa persona la acepta en su teléfono.</p>
+      <div class="accion">
+        <p id="bloqueo-alarma" class="bloqueo t-body-m muted">
+          <span class="material-symbols-rounded" aria-hidden="true">lock</span>
+          Primero guarda un destino
+        </p>
+        <button class="btn-secundario" type="button" disabled aria-describedby="bloqueo-alarma">Programar una alarma</button>
+      </div>
+    </section>
+  </div>
+
+  <aside class="conexion aviso-info" aria-labelledby="titulo-conexion">
+    <span class="material-symbols-rounded" aria-hidden="true">directions_bus</span>
+    <div>
+      <h2 id="titulo-conexion" class="t-title-l">Todo lo que guardes aquí aparece en tu teléfono</h2>
+      <p class="t-body-l">El computador es para dejar todo listo con calma. El teléfono es el que te despierta: allí solo confirmas y descansas.</p>
+    </div>
+  </aside>
+</div>
