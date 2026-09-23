@@ -1,6 +1,6 @@
 <div class="pagina pagina--panel">
   <h1 class="t-headline-l">Tu panel</h1>
-  <p class="t-body-l muted sub">Guardaste un destino. Si quieres, ahora puedes programarle una alarma a alguien más.</p>
+  <p class="t-body-l muted sub">{{ alarmaEnCurso() ? 'Andrés va en camino. Le aviso dos paradas antes de que llegue.' : 'Guardaste un destino. Si quieres, ahora puedes programarle una alarma a alguien más.' }}</p>
 
   <div class="columnas">
     <!-- Mis destinos -->
@@ -8,6 +8,7 @@
       <div class="cuerpo">
         <h2 class="t-title-l">Mis destinos</h2>
 
+      @if (!alarmaEnCurso()) {
       <div class="aviso aviso-exito">
         <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
         <div>
@@ -15,6 +16,7 @@
           <p class="t-body-m m0">Ya puedes programar un trayecto con él.</p>
         </div>
       </div>
+      }
 
       @for (d of destinos; track d.nombre) {
         <button type="button" class="item">
@@ -58,10 +60,20 @@
         <h2 class="t-title-l">Alarmas que programaste</h2>
 
       <p class="t-overline">En curso</p>
+      @if (alarmaEnCurso()) {
+      <div class="trayecto alarma-actual">
+        <div class="encabezado-alarma">
+          <p class="t-title-m m0">Andrés va en camino</p>
+          <span class="estado-alarma t-label-s">En curso</span>
+        </div>
+        <p class="t-body-m muted m0">Trabajo · le aviso 2 paradas antes</p>
+      </div>
+      } @else {
       <div class="aviso aviso-vacio">
         <span class="material-symbols-rounded" aria-hidden="true">inbox</span>
         <p class="t-body-m m0">Todavía no has programado alarmas para alguien más.</p>
       </div>
+      }
 
       <p class="t-overline">Terminadas</p>
       <div class="aviso aviso-vacio">
@@ -76,6 +88,23 @@
     </section>
   </div>
 
+  @if (alarmaEnCurso()) {
+  <section class="tarjeta proximo proximo--en-curso" aria-labelledby="trayecto-en-curso">
+    <app-mapa destino="Trabajo" nota="Faltan 8 km" [alto]="350" [ancho]="600" />
+    <div class="detalle">
+      <p class="t-overline">Alarma en curso · ahora</p>
+      <h2 id="trayecto-en-curso" class="t-headline-l m0">Casa &#8594; Trabajo</h2>
+      <p class="t-body-l muted">Andrés va en el bus. Faltan 8 km para Trabajo y le aviso dos paradas antes.</p>
+      <div class="acciones-propuesta">
+        <p class="aviso alarma-armada">
+          <span class="material-symbols-rounded" aria-hidden="true">alarm_on</span>
+          <span class="t-label-l">Alarma armada en el teléfono de Andrés</span>
+        </p>
+        <button type="button" class="btn-secundario">Ir a panel con alarma terminada</button>
+      </div>
+    </div>
+  </section>
+  } @else {
   <!-- Próximo trayecto -->
   <section class="tarjeta proximo">
     <app-mapa destino="Trabajo" nota="8 km · unos 22 min" [alto]="238" [ancho]="405" />
@@ -88,8 +117,9 @@
           <span class="material-symbols-rounded" aria-hidden="true">alarm_on</span>
           <span class="t-label-l">Te lo propongo mañana a las 6:00</span>
         </p>
-        <button type="button" class="btn-secundario">Ver panel alarma en curso</button>
+        <a class="btn-secundario" routerLink="/panel-alarma-en-curso">Ver panel alarma en curso</a>
       </div>
     </div>
   </section>
+  }
 </div>

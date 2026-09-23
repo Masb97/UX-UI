@@ -86,3 +86,30 @@
 }
 
 .propuesta .t-label-l { color: var(--on-primary-container); }
+
+.encabezado-alarma {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.estado-alarma {
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--r-label);
+  background: var(--alert-container);
+}
+.alarma-armada {
+  align-items: center;
+  margin: 0;
+  background: var(--alert-container);
+  .material-symbols-rounded { font-size: 20px; }
+}
+.proximo--en-curso {
+  grid-template-columns: minmax(0, 600px) minmax(0, 1fr);
+  .detalle > .t-overline { margin-bottom: var(--sp-4); }
+  .detalle > .t-body-l { margin-top: var(--sp-4); }
+}
+@media (max-width: 1100px) {
+  .proximo--en-curso { grid-template-columns: 1fr; }
+}

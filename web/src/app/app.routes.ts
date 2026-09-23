@@ -10,6 +10,7 @@ export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'panel-arranque' },
   { path: 'panel-arranque', component: PanelArranque, title: 'Mi alarma — empieza aquí' },
   { path: 'panel', component: Panel, title: 'Mi alarma — tu panel' },
+  { path: 'panel-alarma-en-curso', component: Panel, data: { estado: 'en-curso' }, title: 'Mi alarma — alarma en curso' },
   { path: 'nuevo-destino', component: NuevoDestino, title: 'Mi alarma — nuevo destino' },
   { path: 'programar-alarma', component: ProgramarAlarma, title: 'Mi alarma — programar una alarma' },
   { path: '**', redirectTo: 'panel' },
