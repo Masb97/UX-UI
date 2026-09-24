@@ -1,3 +1,4 @@
+@if (!esAcceso()) {
 <header class="barra">
   <a class="marca" routerLink="/panel">
     <span class="material-symbols-rounded" aria-hidden="true">notifications_active</span>
@@ -5,9 +6,10 @@
   </a>
   <div class="sesion">
     <span class="correo">jcarballo&#64;correo.com</span>
-    <button type="button" class="salir">Salir</button>
+    <button type="button" class="salir" routerLink="/entrar">Salir</button>
   </div>
 </header>
+}
 
 <main>
   <router-outlet />

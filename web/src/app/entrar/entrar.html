@@ -1,0 +1,44 @@
+<div class="acceso" [style.zoom]="escala()">
+  <aside class="presentacion" aria-label="Mi alarma">
+    <div class="marca-acceso">
+      <span class="material-symbols-rounded" aria-hidden="true">notifications_active</span>
+      <span>Mi alarma</span>
+    </div>
+    <div class="mensaje">
+      <h2>Descansa.<br>Yo te aviso.</h2>
+      <ul>
+        <li><span class="material-symbols-rounded" aria-hidden="true">directions_bus</span>Te aviso dos paradas antes de tu destino.</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">wifi_off</span>Funciona sin conexión, con la ruta descargada.</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">group</span>Puedes programarle la alarma a alguien más.</li>
+      </ul>
+    </div>
+  </aside>
+
+  <section class="contenido" aria-labelledby="titulo-entrar">
+    <form class="formulario" (submit)="entrar($event)" novalidate>
+      <h1 id="titulo-entrar" class="t-headline-l">Entrar</h1>
+      <p class="t-body-m muted bienvenida">Vuelve a donde lo dejaste.</p>
+
+      <div class="grupo">
+        <label class="etiqueta-campo" for="correo-acceso">Correo electrónico</label>
+        <input class="campo" id="correo-acceso" name="correo" type="email" autocomplete="username" value="jcarballo@correo.com">
+      </div>
+      <div class="grupo">
+        <label class="etiqueta-campo" for="clave-acceso">Contraseña</label>
+        <div class="clave">
+          <input class="campo" id="clave-acceso" name="clave" [type]="mostrarClave() ? 'text' : 'password'"
+                 autocomplete="current-password" value="12345678" aria-describedby="ayuda-clave">
+          <button type="button" class="ver-clave" (click)="mostrarClave.set(!mostrarClave())"
+                  [attr.aria-label]="mostrarClave() ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+                  [attr.aria-pressed]="mostrarClave()">
+            <span class="material-symbols-rounded" aria-hidden="true">{{ mostrarClave() ? 'visibility_off' : 'visibility' }}</span>
+          </button>
+        </div>
+        <p id="ayuda-clave" class="ayuda-campo">Mínimo 8 caracteres, con un número</p>
+      </div>
+
+      <button class="btn-primario entrar" type="submit">Entrar</button>
+      <button class="crear-cuenta" type="button">Crear una cuenta</button>
+    </form>
+  </section>
+</div>

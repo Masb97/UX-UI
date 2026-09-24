@@ -1,0 +1,67 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  /* Área exterior al frame: no prolonga los colores del diseño. */
+  background-color: #E7E7EB;
+  background-image: conic-gradient(#F2F2F5 25%, transparent 0 50%, #F2F2F5 0 75%, transparent 0);
+  background-size: 16px 16px;
+}
+.acceso {
+  display: grid;
+  grid-template-columns: 600px 840px;
+  /* Escala uniforme del frame: columnas, espacios, tipografía y controles. */
+  min-height: 1112px;
+  width: 1440px;
+  flex-shrink: 0;
+  background: var(--surface);
+}
+.presentacion {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: 432px 64px 64px;
+  background: var(--primary);
+  color: var(--on-primary);
+}
+.marca-acceso {
+  position: absolute;
+  top: 80px;
+  left: 64px;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font: 500 22px/28px Roboto, sans-serif;
+}
+.mensaje {
+  h2 { margin: 0 0 var(--sp-8); font: 500 48px/56px Roboto, sans-serif; letter-spacing: -0.5px; }
+  ul { display: flex; flex-direction: column; gap: var(--sp-6); list-style: none; padding: 0; margin: 0; }
+  li { display: flex; align-items: center; gap: var(--sp-3); font: 400 16px/24px Roboto, sans-serif; }
+  .material-symbols-rounded { font-size: 20px; flex-shrink: 0; }
+}
+.contenido { display: flex; align-items: flex-start; justify-content: center; padding: 332px 200px 64px; }
+.formulario { width: 100%; max-width: 440px; }
+h1 { margin: 0; }
+.bienvenida { margin: var(--sp-2) 0 var(--sp-4); }
+.grupo { margin-bottom: var(--sp-6); }
+.clave {
+  position: relative;
+  input { padding-right: 56px; }
+}
+.ver-clave {
+  position: absolute; right: 4px; top: 4px;
+  display: grid; place-items: center;
+  width: 48px; height: 48px;
+  border: 0; border-radius: var(--r-field);
+  background: transparent; color: var(--on-surface-variant); cursor: pointer;
+  .material-symbols-rounded { font-size: 20px; }
+}
+.entrar { width: 100%; }
+.crear-cuenta {
+  display: block; margin: var(--sp-6) auto 0; min-height: 48px;
+  padding: 0 var(--sp-4); border: 0; border-radius: var(--r-full);
+  color: var(--primary); background: transparent;
+  font: 500 14px/20px Roboto, sans-serif; cursor: pointer;
+}
+.ver-clave:focus-visible, .crear-cuenta:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
