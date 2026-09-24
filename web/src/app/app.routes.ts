@@ -12,6 +12,7 @@ export const routes: Routes = [
   { path: 'panel', component: Panel, title: 'Mi alarma — tu panel' },
   { path: 'panel-alarma-en-curso', component: Panel, data: { estado: 'en-curso' }, title: 'Mi alarma — alarma en curso' },
   { path: 'panel-alarma-terminada', component: Panel, data: { estado: 'terminada' }, title: 'Mi alarma — alarma terminada' },
+  { path: 'panel-alarma-rechazada', component: Panel, data: { estado: 'rechazada' }, title: 'Mi alarma — alarma rechazada' },
   { path: 'nuevo-destino', component: NuevoDestino, title: 'Mi alarma — nuevo destino' },
   { path: 'programar-alarma', component: ProgramarAlarma, title: 'Mi alarma — programar una alarma' },
   { path: '**', redirectTo: 'panel' },

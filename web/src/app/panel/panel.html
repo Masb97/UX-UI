@@ -1,4 +1,4 @@
-<div class="pagina pagina--panel" [class.pagina--seguimiento]="alarmaEnCurso() || alarmaTerminada()">
+<div class="pagina pagina--panel" [class.pagina--seguimiento]="alarmaEnCurso() || alarmaTerminada() || alarmaRechazada()">
   <h1 class="t-headline-l">Tu panel</h1>
   <p class="t-body-l muted sub">{{ subtitulo() }}</p>
 
@@ -8,7 +8,7 @@
       <div class="cuerpo">
         <h2 class="t-title-l">Mis destinos</h2>
 
-      @if (!alarmaEnCurso() && !alarmaTerminada()) {
+      @if (!alarmaEnCurso() && !alarmaTerminada() && !alarmaRechazada()) {
       <div class="aviso aviso-exito">
         <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
         <div>
@@ -59,6 +59,16 @@
       <div class="cuerpo">
         <h2 class="t-title-l">Alarmas que programaste</h2>
 
+      @if (alarmaRechazada()) {
+      <div class="aviso aviso-error">
+        <span class="material-symbols-rounded" aria-hidden="true">cancel</span>
+        <div>
+          <p class="t-title-m m0">Andrés rechazó la alarma</p>
+          <p class="t-body-m m0">No se armó nada en su teléfono. Puedes escribirle y volver a programarla.</p>
+        </div>
+      </div>
+      }
+
       <p class="t-overline">En curso</p>
       @if (alarmaEnCurso()) {
       <div class="trayecto alarma-actual">
@@ -71,10 +81,11 @@
       } @else {
       <div class="aviso aviso-vacio">
         <span class="material-symbols-rounded" aria-hidden="true">inbox</span>
-        <p class="t-body-m m0">{{ alarmaTerminada() ? 'No tienes alarmas activas en este momento.' : 'Todavía no has programado alarmas para alguien más.' }}</p>
+        <p class="t-body-m m0">{{ alarmaTerminada() || alarmaRechazada() ? 'No tienes alarmas activas en este momento.' : 'Todavía no has programado alarmas para alguien más.' }}</p>
       </div>
       }
 
+      @if (!alarmaRechazada()) {
       <p class="t-overline">Terminadas</p>
       @if (alarmaTerminada()) {
       <div class="trayecto">
@@ -89,6 +100,8 @@
         <span class="material-symbols-rounded" aria-hidden="true">inbox</span>
         <p class="t-body-m m0">Aún no hay nada por aquí.</p>
       </div>
+      }
+
       }
 
       <!-- La única acción principal de la pantalla -->
@@ -129,12 +142,13 @@
   </section>
   } @else {
   <!-- Próximo trayecto -->
-  <section class="tarjeta proximo">
-    <app-mapa destino="Trabajo" nota="8 km · unos 22 min" [alto]="238" [ancho]="405" />
+  <section class="tarjeta proximo" [class.proximo--en-curso]="alarmaRechazada()">
+    <app-mapa destino="Trabajo" nota="8 km · unos 22 min"
+              [alto]="alarmaRechazada() ? 352 : 238" [ancho]="alarmaRechazada() ? 600 : 405" />
     <div class="detalle">
       <p class="t-overline">Tu próximo trayecto · mañana</p>
       <h2 class="t-headline-l m0">Casa &#8594; Trabajo</h2>
-      <p class="t-body-l muted">Salgo entre las 6:00 y las 8:00. Dentro de ese rango te propongo la alarma del día en el teléfono.</p>
+      <p class="t-body-l muted">{{ alarmaRechazada() ? 'Tu propio trayecto sigue programado. Lo que no se armó fue la alarma que le enviaste a Andrés.' : 'Salgo entre las 6:00 y las 8:00. Dentro de ese rango te propongo la alarma del día en el teléfono.' }}</p>
       <div class="acciones-propuesta">
         <p class="aviso aviso-info propuesta">
           <span class="material-symbols-rounded" aria-hidden="true">alarm_on</span>

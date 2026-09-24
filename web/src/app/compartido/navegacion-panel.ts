@@ -11,7 +11,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
          routerLinkActive="actual" ariaCurrentWhenActive="page">Ver pantalla alarma en curso</a>
       <a class="btn-secundario" routerLink="/panel-alarma-terminada"
          routerLinkActive="actual" ariaCurrentWhenActive="page">Ver panel alarma terminada</a>
-      <button type="button" class="btn-secundario">Ver panel alarma rechazada</button>
+      <a class="btn-secundario" routerLink="/panel-alarma-rechazada"
+         routerLinkActive="actual" ariaCurrentWhenActive="page">Ver panel alarma rechazada</a>
     </nav>
   `,
   styles: [`

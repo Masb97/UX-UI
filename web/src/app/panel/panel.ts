@@ -16,7 +16,9 @@ export class Panel {
   private readonly datos = toSignal(this.ruta.data, { initialValue: this.ruta.snapshot.data });
   readonly alarmaEnCurso = computed(() => this.datos()['estado'] === 'en-curso');
   readonly alarmaTerminada = computed(() => this.datos()['estado'] === 'terminada');
+  readonly alarmaRechazada = computed(() => this.datos()['estado'] === 'rechazada');
   readonly subtitulo = computed(() => {
+    if (this.alarmaRechazada()) return 'Andrés no aceptó la alarma. Sin su permiso no se arma nada en su teléfono.';
     if (this.alarmaEnCurso()) return 'Andrés va en camino. Le aviso dos paradas antes de que llegue.';
     if (this.alarmaTerminada()) return 'Andrés llegó. La alarma se cerró y quedó en el historial.';
     return 'Guardaste un destino. Si quieres, ahora puedes programarle una alarma a alguien más.';
