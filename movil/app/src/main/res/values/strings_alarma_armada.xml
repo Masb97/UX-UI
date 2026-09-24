@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="m1b_armada">Alarma armada</string>
+    <string name="m1b_resumen_paradas">Te aviso 2 paradas antes de %1$s.</string>
+    <string name="m1b_resumen_minutos">Te aviso 5 minutos antes de %1$s.</string>
+    <string name="m1b_precision">Precisión: en conexión · comprobado hace 1 minuto</string>
+    <string name="m1b_distancia">Faltan 8 km</string>
+    <string name="m1b_tiempo">Unos 22 minutos, si el bus sigue así.</string>
+    <string name="m1b_probar">Probar el aviso</string>
+    <string name="m1b_desarmar">Desarmar la alarma</string>
+    <string name="m1b_aviso_minutos">Llegas en 5 minutos</string>
+</resources>

@@ -24,6 +24,11 @@ class AvisoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         b = ActivityAvisoBinding.inflate(layoutInflater)
         setContentView(b.root)
+        intent.getStringExtra("nombreDestino")?.let { b.destino.text = it }
+        intent.getStringExtra("direccionDestino")?.let { b.direccion.text = it }
+        if (!intent.getBooleanExtra("avisoParadas", true)) {
+            b.titulo.setText(R.string.m1b_aviso_minutos)
+        }
 
         var inicioX = 0f
         var recorrido = 0f

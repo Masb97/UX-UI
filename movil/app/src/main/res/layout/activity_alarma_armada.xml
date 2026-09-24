@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/surface">
+    <LinearLayout android:id="@+id/barra" android:layout_width="0dp" android:layout_height="64dp" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="16dp" android:paddingEnd="8dp" android:background="@color/primary" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_alarma" android:contentDescription="@null" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="@string/titulo_app" android:textSize="20sp" android:fontFamily="sans-serif-medium" android:textColor="@color/on_primary" />
+        <ImageButton android:layout_width="48dp" android:layout_height="48dp" android:background="?attr/selectableItemBackgroundBorderless" android:src="@drawable/ic_ajustes" android:contentDescription="@string/ajustes" />
+    </LinearLayout>
+    <ScrollView android:layout_width="0dp" android:layout_height="0dp" android:fillViewport="true" app:layout_constraintTop_toBottomOf="@id/barra" app:layout_constraintBottom_toTopOf="@id/btn_desarmar" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="124dp" android:orientation="horizontal" android:gravity="center_vertical" android:padding="16dp" android:background="@drawable/fondo_alarma_armada">
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_reloj" app:tint="@color/on_surface" android:contentDescription="@null" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/m1b_armada" style="@style/TextoTitleL" />
+                    <TextView android:id="@+id/resumen_aviso" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="@string/m1b_resumen_paradas" style="@style/TextoBodyM" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="@string/m1b_precision" android:textSize="12sp" android:textColor="@color/on_surface_variant" />
+                </LinearLayout>
+            </LinearLayout>
+            <FrameLayout android:layout_width="match_parent" android:layout_height="264dp">
+                <ImageView android:id="@+id/mapa" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/mapa_trayecto" android:scaleType="fitXY" android:contentDescription="@string/m1b_armada" />
+                <TextView android:id="@+id/etiqueta_destino" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:layout_marginBottom="32dp" android:background="@drawable/fondo_etiqueta_mapa" android:padding="4dp" android:text="@string/trabajo" android:textSize="12sp" android:textColor="@color/on_surface" />
+            </FrameLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="80dp" android:orientation="horizontal" android:gravity="center_vertical" android:background="@drawable/fondo_tarjeta" android:padding="16dp">
+                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_bus" android:contentDescription="@null" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/m1b_distancia" style="@style/TextoTitleM" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="@string/m1b_tiempo" style="@style/TextoBodyM" />
+                    </LinearLayout>
+                </LinearLayout>
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_probar" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginTop="12dp" android:text="@string/m1b_probar" android:textAllCaps="false" android:textSize="16sp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="999dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.button.MaterialButton android:id="@+id/btn_desarmar" style="@style/Widget.Material3.Button.TextButton" android:layout_width="0dp" android:layout_height="48dp" android:layout_margin="16dp" android:text="@string/m1b_desarmar" android:textAllCaps="false" android:textSize="16sp" android:insetTop="0dp" android:insetBottom="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

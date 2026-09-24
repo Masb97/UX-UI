@@ -31,7 +31,10 @@ class DestinoActivity : AppCompatActivity() {
         b.opcionMinutos.setOnClickListener { seleccionar(paradas = false) }
 
         b.btnArmar.setOnClickListener {
-            startActivity(Intent(this, AvisoActivity::class.java))
+            startActivity(Intent(this, AlarmaArmadaActivity::class.java)
+                .putExtra("nombreDestino", b.nombreDestino.text.toString())
+                .putExtra("direccionDestino", b.direccionDestino.text.toString())
+                .putExtra("avisoParadas", b.radioParadas.isChecked))
         }
 
         seleccionar(paradas = true)

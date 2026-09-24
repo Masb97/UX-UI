@@ -23,7 +23,7 @@ class InicioActivity : AppCompatActivity() {
 
         val irADestino = { startActivity(Intent(this, DestinoActivity::class.java)) }
 
-        b.btnArmar.setOnClickListener { irADestino() }
+        b.btnArmar.setOnClickListener { startActivity(Intent(this, AlarmaArmadaActivity::class.java)) }
         b.itemTrabajo.setOnClickListener { irADestino() }
         b.itemCasa.setOnClickListener { irADestino() }
         b.btnOtro.setOnClickListener { startActivity(Intent(this, ElegirDestinoActivity::class.java)) }

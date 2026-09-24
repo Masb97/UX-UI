@@ -23,6 +23,7 @@
         <activity android:name=".ElegirDestinoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".PuntoFijadoActivity" android:screenOrientation="portrait" />
         <activity android:name=".DestinoActivity" android:screenOrientation="portrait" />
+        <activity android:name=".AlarmaArmadaActivity" android:screenOrientation="portrait" />
         <activity android:name=".AvisoActivity" android:screenOrientation="portrait" />
     </application>
 </manifest>
