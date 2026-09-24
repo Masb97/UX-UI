@@ -26,6 +26,6 @@ class InicioActivity : AppCompatActivity() {
         b.btnArmar.setOnClickListener { irADestino() }
         b.itemTrabajo.setOnClickListener { irADestino() }
         b.itemCasa.setOnClickListener { irADestino() }
-        b.btnOtro.setOnClickListener { irADestino() }
+        b.btnOtro.setOnClickListener { startActivity(Intent(this, ElegirDestinoActivity::class.java)) }
     }
 }

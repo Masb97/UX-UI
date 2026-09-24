@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="m2_titulo">Elegir destino</string>
+    <string name="m2_buscar">Buscar una dirección o un lugar</string>
+    <string name="m2_busqueda">centro comrcial</string>
+    <string name="m2_busqueda_corregida">centro comercial</string>
+    <string name="m2_error">No encontramos «centro comrcial» en Bogotá</string>
+    <string name="m2_sugerencia">¿Quisiste decir centro comercial?</string>
+    <string name="m2_guardados">Guardados</string>
+    <string name="m2_mapa">O toca el mapa para fijar el punto.</string>
+    <string name="m2_usar">Usar este punto</string>
+    <string name="m2_mapa_descripcion">Mapa de referencia en Bogotá, sin punto seleccionado</string>
+</resources>

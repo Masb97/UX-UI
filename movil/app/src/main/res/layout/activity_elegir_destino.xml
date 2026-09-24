@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/surface">
+    <LinearLayout android:id="@+id/barra" android:layout_width="0dp" android:layout_height="64dp" android:background="@color/primary" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="8dp" android:paddingEnd="16dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <ImageButton android:id="@+id/btn_volver" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_atras" android:background="?attr/selectableItemBackgroundBorderless" android:contentDescription="@string/volver" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="@string/m2_titulo" android:textSize="20sp" android:fontFamily="sans-serif-medium" android:textColor="@color/on_primary" />
+    </LinearLayout>
+    <ScrollView android:layout_width="0dp" android:layout_height="0dp" android:fillViewport="true" app:layout_constraintTop_toBottomOf="@id/barra" app:layout_constraintBottom_toTopOf="@id/btn_usar" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:focusableInTouchMode="true">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:labelFor="@id/buscar" android:text="@string/m2_buscar" android:textSize="12sp" android:textColor="@color/on_surface" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="8dp" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="16dp" android:paddingEnd="12dp" android:background="@drawable/fondo_busqueda_error">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_buscar" android:contentDescription="@null" />
+                <EditText android:id="@+id/buscar" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginStart="12dp" android:background="@null" android:inputType="textCapSentences" android:singleLine="true" android:imeOptions="actionSearch" android:text="@string/m2_busqueda" android:textSize="16sp" android:textColor="@color/on_surface" />
+            </LinearLayout>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="@string/m2_error" android:textSize="14sp" android:textColor="@color/error" android:accessibilityLiveRegion="polite" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/sugerencia" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="12dp" android:insetTop="0dp" android:insetBottom="0dp" android:text="@string/m2_sugerencia" android:textAllCaps="false" android:textSize="16sp" android:textColor="@color/on_primary_container" android:backgroundTint="@color/primary_container" android:gravity="start|center_vertical" app:cornerRadius="12dp" app:icon="@drawable/ic_buscar" app:iconTint="@color/primary" app:iconSize="20dp" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="@string/m2_guardados" style="@style/TextoOverline" />
+            <LinearLayout android:id="@+id/item_trabajo" android:layout_width="match_parent" android:layout_height="100dp" android:layout_marginTop="16dp" android:orientation="horizontal" android:gravity="center_vertical" android:background="@drawable/fondo_tarjeta" android:foreground="?attr/selectableItemBackground" android:padding="16dp" android:clickable="true" android:focusable="true">
+                <ImageView android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/fondo_avatar" android:padding="12dp" android:src="@drawable/ic_maletin" android:contentDescription="@null" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/trabajo" style="@style/TextoTitleM" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/dir_trabajo" style="@style/TextoBodyM" />
+                </LinearLayout>
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_chevron" android:contentDescription="@null" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/item_casa" android:layout_width="match_parent" android:layout_height="100dp" android:layout_marginTop="16dp" android:orientation="horizontal" android:gravity="center_vertical" android:background="@drawable/fondo_tarjeta" android:foreground="?attr/selectableItemBackground" android:padding="16dp" android:clickable="true" android:focusable="true">
+                <ImageView android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/fondo_avatar" android:padding="12dp" android:src="@drawable/ic_casa" android:contentDescription="@null" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/casa" style="@style/TextoTitleM" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/dir_casa" style="@style/TextoBodyM" />
+                </LinearLayout>
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_chevron" android:contentDescription="@null" />
+            </LinearLayout>
+            <ImageView android:id="@+id/mapa" android:layout_width="match_parent" android:layout_height="176dp" android:layout_marginTop="16dp" android:src="@drawable/mapa_trayecto" android:scaleType="fitXY" android:contentDescription="@string/m2_mapa_descripcion" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:drawableStart="@drawable/ic_mi_ubicacion" android:drawablePadding="8dp" android:gravity="center_vertical" android:text="@string/m2_mapa" style="@style/TextoBodyM" />
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.button.MaterialButton android:id="@+id/btn_usar" android:layout_width="0dp" android:layout_height="48dp" android:layout_margin="16dp" android:enabled="false" android:text="@string/m2_usar" android:textAllCaps="false" android:textSize="16sp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="999dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

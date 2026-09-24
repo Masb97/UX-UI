@@ -70,6 +70,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/nombre_destino"
                 android:text="@string/trabajo"
                 style="@style/TextoHeadlineM" />
 
@@ -77,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/sp_1"
+                android:id="@+id/direccion_destino"
                 android:text="@string/dir_trabajo"
                 style="@style/TextoBodyL"
                 android:textColor="@color/on_surface_variant" />
