@@ -1,4 +1,4 @@
-# Mi alarma — Maquetación de Front End
+# Mi alarma - Maquetación de Front End
 
 Prototipo navegable de **Mi alarma**, una aplicación que avisa a los pasajeros
 antes de llegar a su destino. Incluye una interfaz web para preparar destinos y
