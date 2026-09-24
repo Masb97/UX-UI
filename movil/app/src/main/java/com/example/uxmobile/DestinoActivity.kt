@@ -20,7 +20,10 @@ class DestinoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         b = ActivityDestinoBinding.inflate(layoutInflater)
         setContentView(b.root)
-        intent.getStringExtra("nombreDestino")?.let { b.nombreDestino.text = it }
+        intent.getStringExtra("nombreDestino")?.let {
+            b.nombreDestino.text = it
+            b.etiquetaDestinoMapa.text = it
+        }
         intent.getStringExtra("direccionDestino")?.let { b.direccionDestino.text = it }
 
         b.btnVolver.setOnClickListener { finish() }

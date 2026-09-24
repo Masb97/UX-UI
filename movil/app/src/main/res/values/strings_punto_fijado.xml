@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="m2b_lugar">Centro comercial Gran Estación</string>
+    <string name="m2b_direccion">Calle 26 con Carrera 60 · Bogotá</string>
+    <string name="m2b_fijado">Punto fijado en el mapa</string>
+    <string name="m2b_nombre">¿Cómo quieres llamarlo?</string>
+    <string name="m2b_ayuda">Así lo vas a ver la próxima vez, sin buscarlo.</string>
+    <string name="m2b_universidad">Universidad</string>
+    <string name="m2b_otro">Otro</string>
+    <string name="m2b_guardar">Guardar y usar</string>
+    <string name="m2b_distancia">8 km desde aquí</string>
+    <string name="m2b_mapa">Punto seleccionado en el centro comercial Gran Estación</string>
+</resources>

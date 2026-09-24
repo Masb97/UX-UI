@@ -255,6 +255,7 @@
                     android:paddingEnd="@dimen/sp_3"
                     android:paddingTop="@dimen/sp_1"
                     android:paddingBottom="@dimen/sp_1"
+                    android:id="@+id/etiqueta_destino_mapa"
                     android:text="@string/trabajo"
                     android:textSize="12sp"
                     android:textStyle="bold"

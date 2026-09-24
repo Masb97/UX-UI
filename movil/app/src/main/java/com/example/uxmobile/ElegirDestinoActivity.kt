@@ -14,10 +14,10 @@ class ElegirDestinoActivity : AppCompatActivity() {
         b.btnVolver.setOnClickListener { finish() }
         b.itemTrabajo.setOnClickListener { abrirDestino(R.string.trabajo, R.string.dir_trabajo) }
         b.itemCasa.setOnClickListener { abrirDestino(R.string.casa, R.string.dir_casa) }
-        b.sugerencia.setOnClickListener {
-            b.buscar.setText(getString(R.string.m2_busqueda_corregida))
-            b.buscar.setSelection(b.buscar.text.length)
-        }
+        val fijarPunto = { startActivity(Intent(this, PuntoFijadoActivity::class.java)) }
+        b.sugerencia.setOnClickListener { fijarPunto() }
+        b.mapa.setOnClickListener { fijarPunto() }
+        b.mapa.isFocusable = true
     }
 
     private fun abrirDestino(nombre: Int, direccion: Int) {
