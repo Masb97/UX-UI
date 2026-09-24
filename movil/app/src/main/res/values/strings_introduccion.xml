@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="intro_titulo">Descansa.\nYo te aviso.</string>
+    <string name="intro_como">Así funciona</string>
+    <string name="intro_destino">Elige a dónde vas</string>
+    <string name="intro_destino_detalle">Guarda el destino una vez y queda listo.</string>
+    <string name="intro_descansa">Guarda el teléfono y descansa</string>
+    <string name="intro_descansa_detalle">No tienes que mirar por la ventana.</string>
+    <string name="intro_aviso">Te avisamos antes de llegar</string>
+    <string name="intro_aviso_detalle">Dos paradas antes, con tiempo para levantarte.</string>
+    <string name="intro_empezar">Empezar</string>
+    <string name="intro_saltar">Saltar</string>
+</resources>

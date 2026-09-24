@@ -10,7 +10,7 @@
         android:theme="@style/Theme.MiAlarma">
 
         <activity
-            android:name=".InicioActivity"
+            android:name=".IntroduccionActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".InicioActivity" android:screenOrientation="portrait" />
         <activity android:name=".DestinoActivity" android:screenOrientation="portrait" />
         <activity android:name=".AvisoActivity" android:screenOrientation="portrait" />
     </application>
