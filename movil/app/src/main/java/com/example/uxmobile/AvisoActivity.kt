@@ -1,8 +1,8 @@
 package com.example.uxmobile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.uxmobile.databinding.ActivityAvisoBinding
 import kotlin.math.max
@@ -34,9 +34,9 @@ class AvisoActivity : AppCompatActivity() {
         var recorrido = 0f
 
         b.deslizador.setOnTouchListener { v, evento ->
-            val maximo = (v.width - b.pomo.width - 32).toFloat()
+            val maximo = (v.width - b.pomo.width - 16 * resources.displayMetrics.density).coerceAtLeast(1f)
             when (evento.action) {
-                MotionEvent.ACTION_DOWN -> { inicioX = evento.x; true }
+                MotionEvent.ACTION_DOWN -> { inicioX = evento.x; recorrido = 0f; true }
                 MotionEvent.ACTION_MOVE -> {
                     recorrido = min(max(evento.x - inicioX, 0f), maximo)
                     b.pomo.translationX = recorrido
@@ -44,8 +44,10 @@ class AvisoActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                    if (recorrido > maximo * 0.75f) {
-                        Toast.makeText(this, R.string.apagada, Toast.LENGTH_SHORT).show()
+                    if (evento.action == MotionEvent.ACTION_UP && recorrido > maximo * 0.75f) {
+                        startActivity(Intent(this, LlegasteActivity::class.java)
+                            .putExtra("nombreDestino", b.destino.text.toString())
+                            .putExtra("direccionDestino", b.direccion.text.toString()))
                         finish()
                     } else {
                         b.pomo.animate().translationX(0f).setDuration(150).start()

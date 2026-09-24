@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="m1e_llegaste">Llegaste a tu destino</string>
+    <string name="m1e_hora">7:42 · la alarma se cerró sola.</string>
+    <string name="m1e_mapa_hora">Llegaste · 7:42</string>
+    <string name="m1e_guardar_pregunta">¿Guardas este destino?</string>
+    <string name="m1e_detalle_guardar">%1$s. Así lo tienes la próxima vez, sin buscarlo.</string>
+    <string name="m1e_guardar">Guardar</string>
+    <string name="m1e_no_gracias">No, gracias</string>
+    <string name="m1e_inicio">Volver al inicio</string>
+    <string name="m1e_mapa">Mapa del trayecto terminado, con la posición junto al destino</string>
+</resources>

@@ -24,6 +24,7 @@
         <activity android:name=".PuntoFijadoActivity" android:screenOrientation="portrait" />
         <activity android:name=".DestinoActivity" android:screenOrientation="portrait" />
         <activity android:name=".AlarmaArmadaActivity" android:screenOrientation="portrait" />
+        <activity android:name=".LlegasteActivity" android:screenOrientation="portrait" />
         <activity android:name=".AvisoActivity" android:screenOrientation="portrait" />
     </application>
 </manifest>
